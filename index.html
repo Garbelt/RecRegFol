@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificación de Instrumentos</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px solid #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid black;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        #panel {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #username {
+            margin-bottom: 10px;
+        }
+
+        #instrument-button {
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .button-group button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #start-button-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        #start-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+        }
+
+        .modal-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #8ec6e6;
+            color: black;
+            padding: 20px;
+            border: 2px solid #333;
+            font-size: 24px;
+            z-index: 9999;
+            text-align: center;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        .found-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            border: 2px solid #333;
+            font-size: 24px;
+            z-index: 9999;
+            text-align: center;
+            width: 80%;
+            max-width: 300px;
+            display: none;
+        }
+
+        .found-message.correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .found-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .found-message.fin {
+            background-color: #8ec6e6;
+            color: black;
+        }
+
+        .found-message.fin2 {
+            background-color: #8ec6e6;
+            color: black;
+        }
+
+        .instrument-button {
+            background-size: cover;
+            background-position: center;
+            width: 100px;
+            height: 100px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="start-button-container">
+        <button id="start-button">EMPEZAR A RECONOCER REGIONES FOLCLÓRICAS</button>
+    </div>
+
+    <div class="container">
+        <table>
+            <tr>
+                <td colspan="2">
+                    <center><b>HOY RECONOCEMOS...</b><br>A qué región pertenecen los ejemplos musicales que vamos escuchando</center>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <center><button id="instrument-button">REPRODUCIR MÚSICA</button></center>
+                    <div class="button-group">
+
+
+
+<table style="margin: 0 auto; border-collapse: collapse; border: none;">
+    <tr>
+        <td style="text-align: center; border: none;" colspan="3">
+            <button class="instrument-button" id="NO-button" style="background-image: url('image/NO.jpg');"></button>
+            <button class="instrument-button" id="CU-button" style="background-image: url('image/CU.jpg');"></button>
+            <button class="instrument-button" id="PA-button" style="background-image: url('image/PA.jpg');"></button>
+        </td>
+    </tr>
+    <tr>
+        <td style="text-align: center; border: none;" colspan="3">
+            <button class="instrument-button" id="CE-button" style="background-image: url('image/CE.jpg');"></button>
+            <button class="instrument-button" id="LI-button" style="background-image: url('image/LI.jpg');"></button>
+        </td>
+    </tr>
+</table>
+
+
+                    </div>
+                </td>
+                <td id="align-top-left">
+                    <div id="panel">
+                        <div>
+                            <div id="actualUsername"></div>
+                            <div id="reloj">Tiempo: 01:00</div>
+                            <div id="errores">Errores: 0/5</div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="found-message" id="message"></div>
+
+		<audio id="background-music" autoplay>
+	<source src="Sound/FondoMus1.mp3" type="audio/mpeg">
+
+	<source id="loop-music-source" src="Sound/FondoMus2.mp3" type="audio/mpeg"> Tu navegador no soporta la reproducción de audio.
+</audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
